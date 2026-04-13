@@ -1,0 +1,39 @@
+{
+  "name": "@csgaglobal/policy-engine",
+  "version": "1.0.0",
+  "description": "Policy-as-code engine for defining, evaluating, and enforcing organizational policies across AI systems and infrastructure.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "policy-engine-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "license": "CC0-1.0",
+  "type": "module",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "author": "CSGA Global",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csga-global/mcp-servers",
+    "directory": "packages/policy-engine"
+  },
+  "keywords": [
+    "mcp",
+    "policy",
+    "governance",
+    "rules-engine",
+    "compliance"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
