@@ -1,0 +1,56 @@
+name: policy-engine-mcp
+description: MCP server for policy evaluation. Cedar (in-process via cedarpy), Rego (subprocess to opa binary with graceful fallback), validation, and line-based diff. From MEOK AI Labs.
+version: 0.1.0
+license: Apache-2.0
+author: MEOK AI Labs
+homepage: https://github.com/CSOAI-ORG/policy-engine
+repository: https://github.com/CSOAI-ORG/policy-engine
+tools:
+- name: evaluate_cedar
+  description: Evaluate a Cedar policy for a (principal, action, resource, context) tuple. Requires pip install cedarpy.
+  parameters:
+  - name: policy
+    type: string
+    required: true
+  - name: principal
+    type: string
+    required: true
+  - name: action
+    type: string
+    required: true
+  - name: resource
+    type: string
+    required: true
+  - name: context
+    type: string
+    required: false
+- name: evaluate_rego
+  description: Evaluate a Rego policy by shelling out to the opa binary. Returns a graceful error if the binary is absent (install via brew install opa).
+  parameters:
+  - name: policy
+    type: string
+    required: true
+  - name: input_json
+    type: string
+    required: true
+- name: validate_cedar
+  description: Validate a Cedar policy's syntax (and optional schema). Returns {valid, errors}.
+  parameters:
+  - name: policy
+    type: string
+    required: true
+  - name: schema
+    type: string
+    required: false
+- name: policy_diff
+  description: Diff two policies; classify added/removed permit/forbid rules. Line-based — sufficient for human review before merging two policy versions.
+  parameters:
+  - name: policy_a
+    type: string
+    required: true
+  - name: policy_b
+    type: string
+    required: true
+  - name: kind
+    type: string
+    required: false

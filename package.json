@@ -1,39 +1,36 @@
 {
-  "name": "@csgaglobal/policy-engine",
-  "version": "1.0.0",
-  "description": "Policy-as-code engine for defining, evaluating, and enforcing organizational policies across AI systems and infrastructure.",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "bin": {
-    "policy-engine-mcp": "dist/index.js"
-  },
-  "files": [
-    "dist",
-    "LICENSE"
-  ],
-  "license": "CC0-1.0",
-  "type": "module",
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.6.1",
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
-    "typescript": "^5.7.3"
-  },
-  "author": "CSGA Global",
+  "name": "@meok-ai-labs/policy-engine-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for multi-language policy evaluation: Cedar (in-process) and Rego (subprocess to opa), with validation and line-based diff.",
+  "license": "Apache-2.0",
+  "author": "MEOK AI Labs",
+  "homepage": "https://github.com/CSOAI-ORG/policy-engine#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/csga-global/mcp-servers",
-    "directory": "packages/policy-engine"
+    "url": "git+https://github.com/CSOAI-ORG/policy-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CSOAI-ORG/policy-engine/issues"
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "policy",
+    "cedar",
+    "rego",
+    "opa",
     "governance",
     "rules-engine",
-    "compliance"
+    "meok"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "python": ">=3.10"
+  },
+  "mcp": {
+    "name": "policy-engine-mcp",
+    "transport": "stdio",
+    "entry": "server:main",
+    "image": "ghcr.io/csoai-org/policy-engine-mcp:latest",
+    "pypi": "policy-engine-mcp"
   }
 }
