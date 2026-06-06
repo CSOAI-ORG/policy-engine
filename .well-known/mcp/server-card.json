@@ -1,0 +1,26 @@
+{
+  "schema": "https://schema.smithery.ai/server-card.json",
+  "name": "policy-engine-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for multi-language policy evaluation: Cedar (in-process via cedarpy) and Rego (subprocess to opa binary). Includes policy validation and line-based diff with effect classification.",
+  "vendor": {
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "email": "nicholas@meok.ai"
+  },
+  "repository": "https://github.com/CSOAI-ORG/policy-engine",
+  "license": "Apache-2.0",
+  "categories": ["security", "policy", "governance"],
+  "tags": ["cedar", "rego", "opa", "policy-as-code", "authorization", "meok"],
+  "tools": [
+    {"name": "evaluate_cedar", "description": "Evaluate a Cedar policy for a (principal, action, resource, context) tuple"},
+    {"name": "evaluate_rego", "description": "Evaluate a Rego policy by shelling out to the opa binary (graceful fallback when absent)"},
+    {"name": "validate_cedar", "description": "Validate a Cedar policy's syntax (and optional schema)"},
+    {"name": "policy_diff", "description": "Diff two policies; classify added/removed permit/forbid rules"}
+  ],
+  "transports": ["stdio", "streamable-http"],
+  "deployment": {
+    "image": "ghcr.io/csoai-org/policy-engine-mcp:latest",
+    "pypi": "policy-engine-mcp"
+  }
+}

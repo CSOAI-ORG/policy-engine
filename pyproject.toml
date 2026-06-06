@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "policy-engine-mcp"
+version = "0.1.0"
+description = "MCP server for multi-language policy evaluation: Cedar (in-process) and Rego (subprocess to opa), with validation and line-based diff"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [
+  {name = "MEOK AI Labs", email = "nicholas@meok.ai"},
+]
+keywords = ["mcp", "model-context-protocol", "policy", "cedar", "rego", "opa", "governance", "rules-engine", "meok"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+]
+dependencies = [
+  "mcp>=1.0.0",
+  "cedarpy>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/CSOAI-ORG/policy-engine"
+Repository = "https://github.com/CSOAI-ORG/policy-engine"
+Issues = "https://github.com/CSOAI-ORG/policy-engine/issues"
+PyPI = "https://pypi.org/project/policy-engine-mcp/"
+Smithery = "https://smithery.ai/server/policy-engine-mcp"
+
+[project.scripts]
+policy_engine_mcp = "server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+only-include = ["server.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
